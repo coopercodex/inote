@@ -2,11 +2,18 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const pool = require("./db");
+const path = require("path");
+const PORT = process.env.PORT || 4000;
 
 app.use(cors());
 app.use(express.json());
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "client/build")));
+}
 //Routes CRUD
+// console.log(__dirname)
+// console.log(path.join(__dirname, "client/build"))
 
 app.post('/todos', async (req, res) => {
   try {
@@ -14,7 +21,7 @@ app.post('/todos', async (req, res) => {
     const newTodo = await pool.query("INSERT INTO todo (title, description) VALUES($1, $2) RETURNING *",
       [title, description]
     );
-    res.json(newTodo.rows)
+    res.json(newTodo.rows[0])
   } catch (error) {
     console.log(error.message)
   }
@@ -22,7 +29,7 @@ app.post('/todos', async (req, res) => {
 
 app.get('/todos', async (req, res) => {
   try {
-    const allTodos = await pool.query("SELECT * FROM todo");
+    const allTodos = await pool.query("SELECT * FROM todo ORDER BY id DESC");
     res.json(allTodos.rows);
   } catch (error) {
     console.log(error.message);
@@ -33,7 +40,7 @@ app.get('/todos/:id', async (req, res) => {
   try {
     const { id } = req.params;
 
-    const todo = await pool.query("SELECT * FROM todo WHERE todo_id = $1", [id]);
+    const todo = await pool.query("SELECT * FROM todo WHERE id = $1", [id]);
     res.json(todo.rows[0]);
   } catch (error) {
     console.log(error.message)
@@ -45,7 +52,7 @@ app.put('/todos/:id', async (req, res) => {
     const { id } = req.params;
     const { title } = req.body;
     const { description } = req.body;
-    const updateTodo = await pool.query("UPDATE todo SET title = $1, description = $2 WHERE todo_id = $3",
+    const updateTodo = await pool.query("UPDATE todo SET title = $1, description = $2 WHERE id = $3",
       [title, description, id]);
     res.json("Todo was updated successfully")
   } catch (error) {
@@ -56,7 +63,7 @@ app.put('/todos/:id', async (req, res) => {
 app.delete('/todos/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const deleteTodo = await pool.query("DELETE FROM todo WHERE todo_id = $1",
+    const deleteTodo = await pool.query("DELETE FROM todo WHERE id = $1",
       [id])
     res.json(`Todo was deleted successfully`)
   } catch (error) {
@@ -64,6 +71,6 @@ app.delete('/todos/:id', async (req, res) => {
   }
 })
 
-app.listen(4000, () => {
+app.listen(PORT, () => {
   console.log('Server has started on 4000')
 });
