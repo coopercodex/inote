@@ -1,0 +1,25 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 4rem;
+}
+
+.page-container {
+  margin: auto;
+}
+
+@media screen and (max-width:680px) {
+  #root {
+    padding: 0;
+  }
+}
+
+
+
+
+
+
+
+
+
+
