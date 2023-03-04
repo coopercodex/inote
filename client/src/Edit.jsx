@@ -13,7 +13,7 @@ export const Edit = ({currentState, setNotes, getData}) => {
   const handleEdit = (e) => {
     e.preventDefault()
     const editedNote = ({title, description})
-    fetch(`http://localhost:4000/todos/${currentState.id}`, {
+    fetch(`/api/todos/${currentState.id}`, {
     method: "PUT",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify(editedNote)
