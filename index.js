@@ -8,12 +8,12 @@ const PORT = process.env.PORT || 4000;
 app.use(cors());
 app.use(express.json());
 
-var distDir = __dirname + "/dist/";
+// var distDir = __dirname + "/dist/";
 
-app.use(express.static(distDir));
+// app.use(express.static(distDir));
 
 // if (process.env.NODE_ENV === "production") {
-//   app.use(express.static(path.join(__dirname, "client/build")));
+  app.use(express.static(path.join(__dirname, "client/build")));
 // }
 //Routes CRUD
 // console.log(__dirname)
@@ -76,9 +76,9 @@ app.delete('/api/todos/:id', async (req, res) => {
 })
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client/build/index.html"))
-})
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 
-app.listen(process.env.PORT || 4000, () => {
+app.listen(PORT, () => {
   console.log('Server has started on 4000')
 });
