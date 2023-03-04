@@ -13,8 +13,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "heroku-postbuild": "cd client && npm install && npm run build"
-    },
+    "heroku-postbuild": "npm run build"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
