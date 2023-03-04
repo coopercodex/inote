@@ -15,7 +15,7 @@ if (process.env.NODE_ENV === "production") {
 // console.log(__dirname)
 // console.log(path.join(__dirname, "client/build"))
 
-app.post('/todos', async (req, res) => {
+app.post('/api/todos', async (req, res) => {
   try {
     const { title, description } = req.body;
     const newTodo = await pool.query("INSERT INTO todo (title, description) VALUES($1, $2) RETURNING *",
@@ -27,7 +27,7 @@ app.post('/todos', async (req, res) => {
   }
 });
 
-app.get('/todos', async (req, res) => {
+app.get('/api/todos', async (req, res) => {
   try {
     const allTodos = await pool.query("SELECT * FROM todo ORDER BY id DESC");
     res.json(allTodos.rows);
@@ -36,7 +36,7 @@ app.get('/todos', async (req, res) => {
   }
 });
 
-app.get('/todos/:id', async (req, res) => {
+app.get('/api/todos/:id', async (req, res) => {
   try {
     const { id } = req.params;
 
@@ -47,7 +47,7 @@ app.get('/todos/:id', async (req, res) => {
   }
 })
 
-app.put('/todos/:id', async (req, res) => {
+app.put('/api/todos/:id', async (req, res) => {
   try {
     const { id } = req.params;
     const { title } = req.body;
@@ -60,7 +60,7 @@ app.put('/todos/:id', async (req, res) => {
   }
 })
 
-app.delete('/todos/:id', async (req, res) => {
+app.delete('/api/todos/:id', async (req, res) => {
   try {
     const { id } = req.params;
     const deleteTodo = await pool.query("DELETE FROM todo WHERE id = $1",
@@ -69,6 +69,10 @@ app.delete('/todos/:id', async (req, res) => {
   } catch (error) {
     console.log(error)
   }
+})
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client/build/index.html"))
 })
 
 app.listen(PORT, () => {

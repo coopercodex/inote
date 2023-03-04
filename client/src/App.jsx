@@ -13,7 +13,7 @@ useEffect(() => {
 }, [])
 
 const getData = () => {
-  fetch('http://localhost:4000/todos')
+  fetch('/api/todos')
   .then(res => res.json())
   .then(data => {
     dispatch(addNotes(data))
@@ -21,7 +21,7 @@ const getData = () => {
 }
  
  const addNewData = (newNote) => {
-   fetch('http://localhost:4000/todos', {
+   fetch('/api/todos', {
      method: 'POST',
      headers: {"Content-Type": "application/json"},
      body: JSON.stringify(newNote)
@@ -35,7 +35,7 @@ const getData = () => {
   
   const deleteNote = (id) => {
     const filterNote = allNotes.filter(n => n.id !== id)
-    fetch(`http://localhost:4000/todos/${id}`, {
+    fetch(`/api/todos/${id}`, {
       method: 'DELETE',
     })
     .then(res => res.json())
