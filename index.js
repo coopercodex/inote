@@ -8,9 +8,13 @@ const PORT = process.env.PORT || 4000;
 app.use(cors());
 app.use(express.json());
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "client/build")));
-}
+var distDir = __dirname + "/dist/";
+
+app.use(express.static(distDir));
+
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static(path.join(__dirname, "client/build")));
+// }
 //Routes CRUD
 // console.log(__dirname)
 // console.log(path.join(__dirname, "client/build"))
@@ -75,6 +79,6 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client/build/index.html"))
 })
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT || 4000, () => {
   console.log('Server has started on 4000')
 });
