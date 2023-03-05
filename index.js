@@ -12,9 +12,9 @@ app.use(express.json());
 
 // app.use(express.static(distDir));
 
-// if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "client/build")));
-// }
+}
 //Routes CRUD
 // console.log(__dirname)
 // console.log(path.join(__dirname, "client/build"))
