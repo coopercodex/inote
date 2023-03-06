@@ -41,7 +41,7 @@ form {
   position: absolute;
   border: 1px solid black;
   padding: 50px 10px;
-  background-color: rgb(213, 222, 230, .9);
+  background-color: rgba(18, 20, 77, 0.9);
   border-radius: 5px;
 }
 
@@ -49,6 +49,7 @@ input,
 textarea {
   font-size: 1rem;
   height: 30px;
+  background-color: gainsboro;
   border: 1px solid rgb(26, 24, 24);
   border-radius: 4px;
 }

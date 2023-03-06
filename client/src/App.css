@@ -4,6 +4,11 @@
   padding: 4rem;
 }
 
+html {
+  color: rgb(203, 192, 192);
+  background: rgb(12, 12, 12);
+}
+
 .page-container {
   margin: auto;
 }

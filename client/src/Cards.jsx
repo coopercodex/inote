@@ -27,7 +27,7 @@ export const Cards = ({ deleteNote, addNewData, getData }) => {
         <div className='card-header'>
           <p className='add-icon' style={{ cursor: 'pointer' }} onClick={() => setShowForm(!showForm)}>{showForm ? <RemoveCircleOutlineIcon /> : <AddCircleOutlineIcon />}</p>
           {showForm ? <Form addNewData={addNewData} /> : null}
-          <h1>Notes</h1>
+          <h1>iNotes</h1>
         </div>
         <p className='total'>{getTotal} words total</p>
         {allNotes.map((note, idx) => (
@@ -38,8 +38,8 @@ export const Cards = ({ deleteNote, addNewData, getData }) => {
               setState(idx)
             }}
             style={{
-              background: state === idx ? 'rgb(11, 126, 236)' : null, 
-              color: state === idx ? 'white' : 'rgb(19, 19, 19)'
+              background: state === idx ? '#2269F3' : null, 
+              color: state === idx ? 'rgb(203, 192, 192)' : 'rgba(203, 192, 192)'
             }}>
             <h2>{note.title}</h2>
             <p>
