@@ -19,7 +19,6 @@ export const Cards = ({ deleteNote, addNewData, getData }) => {
   const dispatch = useDispatch()
 
   const getTotal = allNotes?.reduce((acc, d) => acc += d.description.split(' ').length, 0)
-  console.log("REDUX", allNotes)
 
   return (allNotes) ? (
     <div className="card-container">
