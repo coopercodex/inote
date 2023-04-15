@@ -31,7 +31,7 @@
 
   ## Features
 
-  This application allows users to do full CRUD operations with a Vite/React powered front-end and uses PostgreSQL with Express.js for the back-end. The state of the app is controlled by Redux.
+  This application allows users to do full CRUD operations with a Vite/React powered front-end and uses PostgreSQL with Express.js for the back-end. The state of the app is controlled by Redux. Alan Ai coming soon...
 
   ## Possible Future Extensions
 
