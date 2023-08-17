@@ -1,0 +1,10 @@
+{
+  "lambda": {
+    "role": "notes-api-executor",
+    "name": "notes-api",
+    "region": "us-east-1"
+  },
+  "api": {
+    "id": "v95tp0uwzf"
+  }
+}

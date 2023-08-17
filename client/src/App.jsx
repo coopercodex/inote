@@ -14,7 +14,7 @@ function App() {
   }, [])
 
   const getData = () => {
-    fetch('/api/todos')
+    fetch(import.meta.env.VITE_APP_API)
       .then(res => res.json())
       .then(data => {
         dispatch(addNotes(data))
@@ -22,7 +22,7 @@ function App() {
   }
 
   const addNewData = (newNote) => {
-    fetch('/api/todos', {
+    fetch((import.meta.env.VITE_APP_API), {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newNote)
@@ -36,7 +36,7 @@ function App() {
 
   const deleteNote = (id) => {
     const filterNote = allNotes.filter(n => n.id !== id)
-    fetch(`/api/todos/${id}`, {
+    fetch(`${import.meta.env.VITE_APP_API}/${id}`, {
       method: 'DELETE',
     })
       .then(res => res.json())
