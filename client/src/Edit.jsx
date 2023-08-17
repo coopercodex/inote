@@ -13,7 +13,7 @@ export const Edit = ({currentState, setNotes, getData}) => {
   const handleEdit = (e) => {
     e.preventDefault()
     const editedNote = ({title, description})
-    fetch(`/api/todos/${currentState.id}`, {
+    fetch(`${import.meta.env.VITE_APP_API}/${currentState.id}`, {
     method: "PUT",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify(editedNote)
