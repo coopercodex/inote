@@ -1,4 +1,5 @@
-# inote
+# iNote
+## Deployed Link http://inotebucket.s3-website-us-east-1.amazonaws.com/
 
 ![Screenshot 2023-03-06 at 1 22 58 PM](https://user-images.githubusercontent.com/105816411/223222256-44d41d80-e1f3-48db-93ff-7d381cb2b3f8.png)
 
@@ -21,6 +22,7 @@
 
   - JavaScript
   - React
+  - AWS
   - Redux
   - HTML
   - CSS
@@ -31,7 +33,7 @@
 
   ## Features
 
-  This application allows users to do full CRUD operations with a Vite/React powered front-end and uses PostgreSQL with Express.js for the back-end. The state of the app is controlled by Redux. Alan Ai coming soon...
+  This application allows users to do full CRUD operations with a Vite/React powered front-end and uses AWS RDS PostgreSQL with Express.js and API Gateway for the back-end. The state of the app is controlled by Redux.
 
   ## Possible Future Extensions
 
