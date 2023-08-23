@@ -8,6 +8,7 @@ import { addNotes, selectItems } from './redux/notesSlice'
 function App() {
   const allNotes = useSelector(selectItems)
   const dispatch = useDispatch()
+  console.log(allNotes)
 
   useEffect(() => {
     getData()
@@ -55,7 +56,6 @@ function App() {
       </div>
     </>
   )
-
 }
 
 export default App
